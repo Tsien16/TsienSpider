@@ -17,7 +17,7 @@ class AdministrativeDivisionSpider(scrapy.Spider):
         area_item = AdministrativeDivisionItem()
         area_node_list = response.css(".provincetr td a")
         for area_node in area_node_list:
-            area_item['areaCode'] = area_node.css('a::attr(href)').extract_first()
+            area_item['areaCode'] = area_node.css('a::attr(href)').extract_first()[:-5]
             area_item['areaName'] = area_node.css('a::text').extract_first()
             area_item['areaLevel'] = '省'
             area_item['parentCode'] = '0'
